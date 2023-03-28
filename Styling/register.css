@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #051937;
+    display:flex;
+    height:100vw;
+}
+
+main #register{
+    display:flex;
+    flex-flow:column wrap;
+
+}

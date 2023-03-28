@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    flex-flow: column nowrap;
+    background-image: linear-gradient(to bottom, #051937, #13385b, #225a80, #327fa4, #46a6c7);
+    align-items: center;
+    height: 100vh;
+    padding:0;
+
+}
+header nav{
+    margin-top:50px;
+}
+
+header nav ul{
+    display:flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    gap:70px;
+}
+
+nav ul a{
+    text-decoration: none;
+    color:white;
+    font-family: 'Climate Crisis', cursive;
+    font-size:20px;
+    letter-spacing: 1px;
+}
+
+nav ul a:hover{
+    background-color:white;
+    color:#051937;
+    padding:20px;
+    border-radius:30px;
+    margin:-20px;
+}
+.container{
+    width:1200px;
+    height:600px;
+    border:1px solid;
+    margin-top:30px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: auto auto auto auto;
+    gap: 70px;
+    padding: 10px;
+}
+
+.container .item{
+    background-color: white;
+    height:200px;
+    width:200px;
+    border-radius: 30px;
+    font-size:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
