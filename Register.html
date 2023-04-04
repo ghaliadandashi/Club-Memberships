@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styling/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lilita+One&display=swap" rel="stylesheet">
     <title>Register</title>
 </head>
 <body>
 <main>
-  <form action="register.php" method="POST" id="register">
-    <span class="registertitle">Register</span>
-    <div class="divider"></div>
-      <input type="text" id="fname" placeholder="First Name">
-      <input type="text" id="lname" placeholder="Last Name">
-      
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id ="password" name="password" placeholder="Password" required>
-    <input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" required>
-    <input type="submit" id="submit" value="Register">
-    <span class="almem">Already a member? <a href="login.html">Login</a></span>
-  </form>
+    <div class="container">
+        <section class="header">
+            <img src="media\logo.png" height="80" width="80">
+            <h2 class="registertitle">Create an Account</h2>
+        </section>
+      <form action="register.php" method="POST" id="register">
+        <div class="divider"></div>
+          <input type="text" id="fname" placeholder="First Name">
+          <input type="text" id="lname" placeholder="Last Name">
 
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id ="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" required>
+        <input type="date" id="dob" placeholder="Date of Birth" required>
+          <input type="submit" id="submit" value="Register">
+        <span class="almem">Already a member? <a href="login.html" class="lo">Login</a></span>
+      </form>
+    </div>
 </main>
 
 </body>

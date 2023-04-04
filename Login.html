@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="Styling/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lilita+One&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Styling/login.css">
 </head>
 <body>
 <main>
-    <form action="login.php" method="POST" id="login">
-        <span class="logintitle">Login.</span>
-        <div class="divider"></div>
-        <input type="text" id="emailusername" placeholder="Username or Email" required>
-        <input type="password" id ="password" name="password" placeholder="Password" required>
-        <a href="password.html" class="passforgot">Forgot Password?</a>
-        <input type="submit" id="submit" value="Login">
-        <span class="notmem">Not a member? <a href="register.html">Register</a></span>
-    </form>
-
+    <div class="container">
+        <section class="header">
+            <img src="media/logo.png" height="80" width="80">
+            <h2 class="logintitle">Login</h2>
+        </section>
+        <form action="login.php" method="POST" id="login">
+            <div class="divider"></div>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" id="submit" value="Login">
+            <span class="almem">Not a member yet? <a href="register.html" class="lo">Register</a></span>
+        </form>
+    </div>
 </main>
-
 </body>
 </html>
