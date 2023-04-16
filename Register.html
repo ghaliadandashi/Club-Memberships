@@ -15,18 +15,15 @@
 <main>
     <div class="container">
         <section class="header">
-            <img src="media\logo.png" height="80" width="80">
+            <img src="media\logo1.png" height="30" width="35">
             <h2 class="registertitle">Create an Account</h2>
         </section>
       <form action="register.php" method="POST" id="register">
-        <div class="divider"></div>
-          <input type="text" id="fname" placeholder="First Name">
-          <input type="text" id="lname" placeholder="Last Name">
-
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id ="password" name="password" placeholder="Password" required>
-        <input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" required>
-        <input type="date" id="dob" placeholder="Date of Birth" required>
+          <input type="text" name="name" id="name" placeholder="Full Name">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="password" name="confirmpass" placeholder="Confirm Password" required>
+          <input type="text"  name= "dob" placeholder="Date of Birth" onfocus="(this.type='date')">
           <input type="submit" id="submit" value="Register">
         <span class="almem">Already a member? <a href="login.html" class="lo">Login</a></span>
       </form>

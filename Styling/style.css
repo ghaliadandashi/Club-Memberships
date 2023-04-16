@@ -5,43 +5,56 @@
 body{
     display:flex;
     flex-flow: column nowrap;
-    background-image: linear-gradient(to bottom, #051937, #13385b, #225a80, #327fa4, #46a6c7);
+    background-image:url("../media/bg.png");
+    background-repeat: no-repeat;
+    background-size: auto;
     align-items: center;
     height: 100vh;
     padding:0;
-
 }
+
+header{
+    width:191.75vh;
+    margin-top:-9px;
+}
+
 header nav{
-    margin-top:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:16px;
+    background-image: url("../media/Layer 1.png");
+    background-size:555px;
 }
 
 header nav ul{
     display:flex;
     flex-flow: row nowrap;
     list-style-type: none;
-    gap:70px;
+    gap:100px;
 }
 
 nav ul a{
     text-decoration: none;
     color:white;
-    font-family: 'Climate Crisis', cursive;
-    font-size:20px;
+    font-family: 'Righteous', cursive;
+    font-weight: bold;
+    font-size:40px;
     letter-spacing: 1px;
+    text-shadow: 0px 1px 1px black,
+    0px 3px 1px black;
+    background-color: #1d476d;
+    padding:10px 30px;
+    border-radius: 20px;
 }
 
 nav ul a:hover{
-    background-color:white;
-    color:#051937;
-    padding:20px;
-    border-radius:30px;
-    margin:-20px;
+    background-color:#fbc742;
+    box-shadow: 0px 0px 15px #ffedda;
+    border:3px solid #ffedda;
 }
 .container{
-    width:1200px;
-    height:600px;
-    border:1px solid;
-    margin-top:30px;
+    margin-top:70px;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -52,13 +65,16 @@ nav ul a:hover{
 
 .container .item{
     background-color: white;
-    height:200px;
-    width:200px;
-    border-radius: 30px;
+    border:7px solid black;
+    box-shadow:0px 7px 0px black;
+    border-radius: 55px;
+    padding:30px 80px;
     font-size:50px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    font-family: 'Righteous', cursive;
 }
+
+
 

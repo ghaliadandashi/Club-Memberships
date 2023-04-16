@@ -4,6 +4,7 @@ body{
     height:100vh;
     justify-content: center;
     align-items: center;
+    background-color:white;
 }
 
 .container{
@@ -15,21 +16,28 @@ body{
     padding:5px 10px 10px 10px;
     border-radius: 10px;
 }
+
 .container .header{
     display:flex;
-    flex-flow:row wrap;
-    justify-content: center;
-    align-items: center;
-    gap:15px;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-items: stretch;
+    gap:5px;
 }
 
-.container section h2{
+
+.container .header h2{
     color:white;
     font-family: 'Lilita One', cursive;
     font-weight: lighter;
     font-size: 30px;
     text-shadow: 0px 1px 1px #a09ca2,
-    0px 2px 1px rgba(37,36,34,255);
+    0px 3px 1px rgba(37,36,34,255);
+    flex-grow:3;
+}
+
+.container .header img{
+    flex-grow: 1;
 }
 
 .container #login{
@@ -45,11 +53,12 @@ body{
 
 .container #login input:not([type="submit"]){
     border-radius:5px;
-    width:350px;
+    width:300px;
     padding:10px;
     border:none;
     box-shadow:0px 0px 1px 1px #a09ca2;
     outline:none;
+    font-family: Ubuntu;
 }
 
 .container #login input[type="submit"]{
@@ -64,6 +73,9 @@ body{
     font-family: 'Lilita One', cursive;
     background-color: #38e24b;
     font-size: 20px;
+}
+.container #login input[type="submit"]:hover{
+    cursor: pointer;
 }
 
 #login .almem{
