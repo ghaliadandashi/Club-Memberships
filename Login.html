@@ -23,9 +23,38 @@
             <input type="email" name ="email" id="email" placeholder="Email" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="submit" id="submit" value="Login">
+            <p class="error" id="error"></p>
             <span class="almem">Not a member yet? <a href="register.html" class="lo">Register</a></span>
         </form>
     </div>
 </main>
+<script>
+    document.getElementById("login").addEventListener("submit",function(event){
+        event.preventDefault();
+
+        var data = new URLSearchParams();
+        for (const pair of new FormData(this)) {
+            data.append(pair[0], pair[1]);
+        }
+
+        fetch('login.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    document.getElementById("error").style.display= "block";
+                    document.getElementById("error").innerHTML = data.error;
+                } else if (data.success) {
+                    window.location.href = 'http://localhost:8080/Home.php';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+
+</script>
 </body>
 </html>

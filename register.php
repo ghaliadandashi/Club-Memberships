@@ -6,37 +6,61 @@ $uemail = $_POST['email'];
 $upass = $_POST['password'];
 $cupass = $_POST['confirmpass'];
 $udob = $_POST['dob'];
+$dobb = date('Y-m-d', strtotime($udob));
+$role = "user";
 
-$hashed ='';
-$error_msgs =[];
-if($upass != $cupass){
-    $error_msgs[] = "Passwords do not match!";
-}else if(strlen($upass) < 8){
-    $error_msgs[] = "Password must be longer!";
-}else if(!preg_match("/[A-Z]/", $upass)){
-    $error_msgs[]= "Password must contain at least one uppercase letter!";
-}else if(!preg_match("/[a-z]/",$upass)){
-    $error_msgs[]= "Password must contain at least one lowercase letter!";
-}else if(!preg_match("/[0-9]/",$upass)){
-    $error_msgs[] = "Password must contin at least one number!";
-}else{
-    $hashed = password_hash($upass,PASSWORD_DEFAULT);
-}
+$error_msgs = [];
+$hashed = '';
 
+$stmt = $conn->prepare('SELECT * from users where email = ?');
+$stmt->bind_param('s', $uemail);
+$stmt->execute();
+$stmt->store_result();
 
-
-
-$query = "INSERT INTO members (name, email, password, dob) VALUES (?, ?, ?, ?)";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("ssss", $un, $uemail, $hashed, $udob);
-
-if ($stmt->execute()) {
-    header("Location: login.html");
+if($stmt->num_rows > 0 ) {
+    echo json_encode(["error" => "Email already exists!"]);
     exit();
-} else {
-    echo "Error: " . $stmt->error;
 }
 
-$stmt->close();
+if ($upass != $cupass) {
+    echo json_encode(["error" => "Passwords do not match!"]);
+    exit();
+} else if (strlen($upass) < 8) {
+    echo json_encode(["error" => "Password must be longer!"]);
+    exit();
+} else if (!preg_match("/[A-Z]/", $upass)) {
+    echo json_encode(["error" => "Password must contain at least one uppercase letter!"]);
+    exit();
+} else if (!preg_match("/[a-z]/", $upass)) {
+    echo json_encode(["error" => "Password must contain at least one lowercase letter!"]);
+    exit();
+} else if (!preg_match("/[0-9]/", $upass)) {
+    echo json_encode(["error" => "Password must contain at least one number!"]);
+    exit();
+}
+
+$hashed = password_hash($upass, PASSWORD_DEFAULT);
+
+$current_date = new DateTime();
+$date_of_birth = DateTime::createFromFormat('Y-m-d', $dobb);
+$age = $current_date->diff($date_of_birth)->y;
+
+if(!isset($age)){
+    echo json_encode(["error"=> "Must enter date of birth"]);
+    exit();
+}
+if ($age < 18) {
+    echo json_encode(["error" =>  "You must be older than 18!"]);
+    exit();
+}
+
+    $query = "INSERT INTO users (full_name, email, password, dob,role) VALUES (?, ?, ?, ?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sssss", $un, $uemail, $hashed, $dobb,$role);
+
+   $stmt->execute();
+   $stmt->close();
+echo json_encode(['success' => 'Registration successful.']);
+
 $conn->close();
 ?>

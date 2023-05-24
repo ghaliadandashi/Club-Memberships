@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    flex-flow:column wrap;
+    background-color: #051937;
+    align-items: center;
+    justify-content: center;
+}
+header nav{
+    display: flex;
+    margin-top:50px;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav ul{
+    display:flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    gap:70px;
+}
+
+nav ul a{
+    text-decoration: none;
+    color:black;
+    font-family:"Lilita One";
+    font-size:20px;
+    letter-spacing: 1px;
+}
+
+nav ul a:hover{
+    background-color:black;
+    color:white;
+    padding:20px;
+    border-radius:30px;
+    margin:-20px;
+}
+
+main .container{
+    height:300px;
+    width:300px;
+    background-color: black;
+}

@@ -86,3 +86,13 @@ body{
 #register .almem a{
     color:#38e24b;
 }
+
+.error{
+    display:none;
+    font-size:13px;
+    margin:-6px;
+    padding:7px 30px;
+    background-color: rgba(219, 0, 0, 0.52);
+    border-radius: 5px;
+    font-family: Ubuntu;
+}

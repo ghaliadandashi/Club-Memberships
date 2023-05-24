@@ -20,15 +20,43 @@
         </section>
       <form action="register.php" method="POST" id="register">
           <input type="text" name="name" id="name" placeholder="Full Name">
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="password" name="password" placeholder="Password" required>
-          <input type="password" name="confirmpass" placeholder="Confirm Password" required>
-          <input type="text"  name= "dob" placeholder="Date of Birth" onfocus="(this.type='date')">
+          <input type="email" name="email" id="email" placeholder="Email" required>
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <input type="password" name="confirmpass" id="confirmpass" placeholder="Confirm Password" required>
+          <input type="text"  name= "dob" id="dob" placeholder="Date of Birth" onfocus="(this.type='date')" required>
+          <p class="error" id="error"></p>
           <input type="submit" id="submit" value="Register">
         <span class="almem">Already a member? <a href="login.html" class="lo">Login</a></span>
       </form>
     </div>
 </main>
+<script>
+    document.getElementById("register").addEventListener("submit",function(event){
+        event.preventDefault();
 
+        var data = new URLSearchParams();
+        for (const pair of new FormData(this)) {
+            data.append(pair[0], pair[1]);
+        }
+
+        fetch('register.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    document.getElementById("error").style.display= "block";
+                    document.getElementById("error").innerHTML = data.error;
+                } else if (data.success) {
+                    window.location.href = 'http://localhost:8080/Login.html';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+
+</script>
 </body>
 </html>

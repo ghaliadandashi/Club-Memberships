@@ -1,10 +1,11 @@
 body{
-    background-color: whitesmoke;
     display:flex;
     height:100vh;
     justify-content: center;
     align-items: center;
-    background-color:white;
+    background-image:url("../media/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container{
@@ -83,5 +84,14 @@ body{
 }
 #login .almem a{
     color:#38e24b;
+}
+.error{
+    display:none;
+    font-size:13px;
+    margin:-6px;
+    padding:7px 30px;
+    background-color: rgba(219, 0, 0, 0.52);
+    border-radius: 5px;
+    font-family: Ubuntu;
 }
 

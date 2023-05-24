@@ -23,8 +23,8 @@ header nav{
     align-items: center;
     justify-content: center;
     padding:16px;
-    background-image: url("../media/Layer 1.png");
-    background-size:555px;
+    background-color:white;
+    border-bottom:5px solid black;
 }
 
 header nav ul{
@@ -41,40 +41,75 @@ nav ul a{
     font-weight: bold;
     font-size:40px;
     letter-spacing: 1px;
-    text-shadow: 0px 1px 1px black,
-    0px 3px 1px black;
-    background-color: #1d476d;
-    padding:10px 30px;
+    text-shadow: 0px 3px 1px black,
+    0px 4px 1px black;
+    background-color: black;
+    padding:10px 20px;
     border-radius: 20px;
+    margin-top:5px;
+    box-shadow: 0px 0px 3px white inset ,0px 0px 2px black inset;
 }
 
 nav ul a:hover{
-    background-color:#fbc742;
-    box-shadow: 0px 0px 15px #ffedda;
-    border:3px solid #ffedda;
+    background-color:#135f9a;
+    box-shadow: 0px 3px 8px black;
+
+    margin:-7px;
 }
-.container{
-    margin-top:70px;
+.userpro{
+    display:flex;
+    flex-flow:row nowrap;
+    margin-left:150px;
+    flex:1;
+}
+nav .userpro a{
+    padding:10px;
+    background-color:white;
+    font-size:15px;
+    margin-left:50px;
+    text-decoration: none;
+    color:black;
+    font-family: 'Righteous', cursive;
+    border-radius:10px;
+}
+.container {
+    margin-top: 70px;
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     gap: 70px;
     padding: 10px;
 }
 
-.container .item{
+.container .item {
     background-color: white;
-    border:7px solid black;
-    box-shadow:0px 7px 0px black;
+    border: 7px solid black;
+    box-shadow: 0px 7px 0px black;
     border-radius: 55px;
-    padding:30px 80px;
-    font-size:50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 30px 45px;
+    font-size: 50px;
     font-family: 'Righteous', cursive;
+    position: relative;
 }
+
+.container .item .icon {
+    position: absolute;
+    top: -8px;
+    right: 1px;
+    cursor: pointer;
+}
+
+.container .item h5 {
+    margin: -10px 15px 0px 0px;
+    text-align:center;
+}
+
+.container .item p{
+    font-size:15px;
+}
+
+
 
 
 
