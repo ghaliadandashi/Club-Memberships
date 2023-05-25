@@ -8,7 +8,7 @@ error_reporting(0)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubs</title>
-    <link href="Styling/style.css" rel="stylesheet">
+    <link href="/Styling/style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
@@ -18,16 +18,16 @@ error_reporting(0)
 <header>
 <nav>
     <ul>
-        <li><a href="Home.php">Membership Plans</a></li>
-        <li><a href="Profile.html">Profile</a></li>
+        <li><a href="index.php">Membership Plans</a></li>
+        <li><a href="profile.html">Profile</a></li>
     </ul>
     <?php
     if(!isset($_SESSION['userID'])) {
 
         ?>
         <div class="userpro">
-            <a href="Login.html">Login</a>
-            <a href="Register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
         </div>
 
         <?php
