@@ -1,7 +1,8 @@
 <?php
 session_start();
-error_reporting(0)
+error_reporting(0);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,14 @@ error_reporting(0)
     <ul>
         <li><a href="Home.php">Membership Plans</a></li>
         <li><a href="Profile.html">Profile</a></li>
+        <?php
+        if(($_SESSION['userRole'] === 'admin')) {
+            ?>
+            <li><a href="Admin.html">Admin</a></li>
+
+            <?php
+        }
+        ?>
     </ul>
     <?php
     if(!isset($_SESSION['userID'])) {
@@ -38,64 +47,47 @@ error_reporting(0)
 </header>
 <main>
     <section class="container">
-        <div class="item">
+        <div class="container1">
             <?php
             if(($_SESSION['userRole'] === 'admin')) {
                 ?>
-                <div class="icon">
-                    <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
-                </div>
+                <button class="additembtn">Add Plan</button>
 
                 <?php
             }
             ?>
-            <h5>Bronze</h5>
-            <p>This membership consists of the following features:</p>
         </div>
-        <div class="item">
+        <div class="container2">
             <?php
-            if(($_SESSION['userRole'] === 'admin')) {
-                ?>
-                <div class="icon">
-                    <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
-                </div>
+            require "dbconnect.php";
 
-                <?php
+            $stmt = $conn->prepare('SELECT * FROM memberships');
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <div class="item">
+                        <?php if ($_SESSION['userRole'] === 'admin') { ?>
+                            <div class="icon">
+                                <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
+                            </div>
+                        <?php } ?>
+                        <h5 class="planname"><?php echo $row['name']; ?></h5>
+                        <p class="plandesc"><?php echo $row['description']; ?></p>
+                    </div>
+                    <?php
+                }
+            } else {
+                echo "No memberships found!";
             }
             ?>
-            <h5>Silver</h5>
-            <p>This membership consists of the following features:</p>
-        </div>
-        <div class="item">
-            <?php
-            if(($_SESSION['userRole'] === 'admin')) {
-                ?>
-                <div class="icon">
-                    <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
-                </div>
-
-                <?php
-            }
-            ?>
-            <h5>Gold</h5>
-            <p>This membership consists of the following features:</p>
         </div>
     </section>
 </main>
 <footer>
-
 </footer>
-<script>
-    fetch('http://localhost.com/memberships.php')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-        })
-        .catch(function(error) {
-            console.error(error);
-        });
-</script>
 <script src="https://kit.fontawesome.com/f04a6cfd3a.js" crossorigin="anonymous"></script>
 </body>
 </html>
