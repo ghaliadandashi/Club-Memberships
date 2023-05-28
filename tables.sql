@@ -19,20 +19,20 @@ INSERT INTO memberships (name,description)VALUES('BRONZE','This membership consi
     • Tier Unlock: Instantly unlock two additional tiers to progress further in the game.
     • Exclusive Bronze Sticker: Earn our exclusive
 Bronze sticker to showcase your membership status.
-Daily Bonus Chest: Receive a daily bonus chest with extra resources for deck building and upgrading.','approved');
+Daily Bonus Chest: Receive a daily bonus chest with extra resources for deck building and upgrading.');
 
 INSERT INTO memberships (name,description)VALUES('SILVER','This membership consists of the following features:
 Tier Unlock: Unlock five additional tiers to progress further in the game. Additionally, receive a bonus Silver Chest.
 •Exclusive Silver Sticker: Earn our exclusive
 Silver sticker to showcase your membership status in style.
-Bonus Chests: Enjoy the advantage of receiving three bonus chests every two days.','approved');
+Bonus Chests: Enjoy the advantage of receiving three bonus chests every two days.');
 
 INSERT INTO memberships (name,description)VALUES('GOLD','This membership consists of the following features:
 • Tier Unlock: Unlock ten additional tiers for exclusive high-level gameplay and rewords.
 Exclusive Cold Sticker: Showcase your prestigious Gold membership status.
 •Legendary Chests: Receive one
 Legendary Chest every week for powerful and rare cards,
-• Priority Support: Enjoy priority customer support for any inquiries or issues you may encounter.','approved');
+• Priority Support: Enjoy priority customer support for any inquiries or issues you may encounter.');
 
 CREATE TABLE membership_user (
                                  userID INT NOT NULL,
