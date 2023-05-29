@@ -104,11 +104,15 @@ nav .userpro a{
     align-items: center;
     justify-content: center;
     grid-template-columns: auto auto auto;
-    gap: 70px;
+    gap: 60px;
     padding: 10px;
 }
 
 .container2 .item {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
     background-color: white;
     border: 7px solid black;
     box-shadow: 0px 7px 0px black;
@@ -162,9 +166,9 @@ nav .userpro a{
     box-shadow: 0px 3px 8px black;
     margin: -5px;
 }
-/* Add these CSS styles for the buttons */
 
-button.additembtn {
+
+button .additembtn {
     background-color: #ff2500;
     padding: 10px 30px;
     border: none;
@@ -178,31 +182,11 @@ button.additembtn {
     margin-top: 10px;
 }
 
-button.additembtn:hover {
-    background-color: #ff4d37;
-    box-shadow: 0px 3px 8px black;
-    margin: -5px;
+button .additembtn:hover {
+    background-color: #f53a24;
+    padding:12px 32px;
 }
 
-button.applybtn {
-    background-color: #ff2500;
-    padding: 10px 30px;
-    border: none;
-    font-size: 20px;
-    border-radius: 30%;
-    color: white;
-    font-family: 'Righteous', cursive;
-    text-shadow: 0px 2px 1px black;
-    box-shadow: 0px 2px 1px black;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button.applybtn:hover {
-    background-color: #ff4d37;
-    box-shadow: 0px 3px 8px;
-
-}
 
 
 

@@ -18,12 +18,14 @@ error_reporting(0);
 <header>
     <nav>
         <ul>
-            <li><a href="index.php">Membership Plans</a></li>
+            <li><a href="index.php" class="selected-page">Membership Plans</a></li>
+            <?php if($_SESSION['userRole']==='user'){?>
             <li><a href="profile.php">Profile</a></li>
+            <?php }?>
             <?php
             if ($_SESSION['userRole'] === 'admin') {
                 ?>
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="admin.php">Admin</a></li>
                 <?php
             }
             ?>
@@ -70,7 +72,9 @@ error_reporting(0);
                         <?php } ?>
                         <h5 class="planname"><?php echo $row['name']; ?></h5>
                         <p class="plandesc"><?php echo $row['description']; ?></p>
-                        <button class="applybtn">Apply</button>
+                        <?php if(($_SESSION['userRole']==='user') || (count($_SESSION)===0)){?>
+                        <button class="applybtn" onclick="">Apply</button>
+                        <?php } ?>
                     </div>
                     <?php
                 }

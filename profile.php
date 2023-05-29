@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(count($_SESSION)==0){
+    header("Location: login.html");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +21,8 @@
     <header> 
         <nav>
             <ul>
-                <li><a href="Home.php">Membership Plans</a></li>
-                <li><a href="profile.php" class="active">Profile</a></li>
-                <li><a href="Admin.html">Admin</a></li>
+                <li><a href="index.php">Membership Plans</a></li>
+                <li><a href="profile.php" class="selected-page"> Profile</a></li>
                 <li class="userpro"><a href="#">Logout</a></li>
             </ul>
         </nav>

@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-flow: column nowrap;
+    background-image: url("../media/bg.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    align-items: flex-start; /* Updated */
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 100vw;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: white;
+    border-bottom: 5px solid black;
+}
+
+nav ul {
+    align-self: center;
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    gap: 100px;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Righteous', cursive;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: 1px;
+    text-shadow: 0px 3px 1px black, 0px 4px 1px black;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px white inset, 0px 0px 2px black inset;
+}
+
+nav ul a:hover {
+    background-color: #135f9a;
+    box-shadow: 0px 3px 8px black;
+    margin: 0;
+}
+
+.selected-page {
+    background: #135f9a;
+}
+.selected-page:hover{
+    background:#135f9a;
+    margin:0;
+    box-shadow: 0px 0px 3px white inset ,0px 0px 2px black inset;
+}
