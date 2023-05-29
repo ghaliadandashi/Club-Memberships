@@ -15,7 +15,7 @@
 <main>
     <div class="container">
         <section class="header">
-            <img src="media/logo.png" height="80" width="80">
+            <img src="/media/logo.png" height="80" width="80">
             <h2 class="logintitle">Login</h2>
         </section>
         <form action="login.php" method="POST" id="login">
@@ -45,9 +45,9 @@
             .then(data => {
                 if(data.error) {
                     document.getElementById("error").style.display= "block";
-                    document.getElementById("error").innerHTML = data.error;
+                    document.getElementById("error").innerHTML = data.error ;
                 } else if (data.success) {
-                    window.location.href = 'http://localhost:8080/Home.php';
+                    window.location.href = 'index.php';
                 }
             })
             .catch((error) => {
