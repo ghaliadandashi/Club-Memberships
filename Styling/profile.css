@@ -50,7 +50,16 @@ nav ul a {
 nav ul a:hover {
     background-color: #135f9a;
     box-shadow: 0px 3px 8px black;
-    margin: -7px;
+    margin: 0;
+}
+
+.selected-page {
+    background: #135f9a;
+}
+.selected-page:hover{
+    background:#135f9a;
+    margin:0;
+    box-shadow: 0px 0px 3px white inset ,0px 0px 2px black inset;
 }
 
 .container {
