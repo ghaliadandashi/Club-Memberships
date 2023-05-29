@@ -83,19 +83,3 @@ error_reporting(0)
     </section>
 </main>
 <footer>
-
-</footer>
-<script>
-    fetch('http://localhost.com/memberships.php')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-        })
-        .catch(function(error) {
-            console.error(error);
-        });
-</script>
-<script src="https://kit.fontawesome.com/f04a6cfd3a.js" crossorigin="anonymous"></script>
-</body>
-</html>

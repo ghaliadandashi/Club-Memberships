@@ -1,46 +1,196 @@
-*{
-    box-sizing: border-box;
-}
-
-body{
-    display:flex;
-    flex-flow:column wrap;
-    background-color: #051937;
-    align-items: center;
-    justify-content: center;
-}
-header nav{
+body {
     display: flex;
-    margin-top:50px;
-    align-items: center;
-    justify-content: center;
+    flex-flow: column nowrap;
+    background-image: url("../media/bg.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    align-items: flex-start; /* Updated */
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
-header nav ul{
-    display:flex;
+header {
+    width: 100vw;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: white;
+    border-bottom: 5px solid black;
+}
+
+nav ul {
+    align-self: center;
+    display: flex;
     flex-flow: row nowrap;
     list-style-type: none;
-    gap:70px;
+    gap: 100px;
+    padding: 0;
 }
 
-nav ul a{
+nav ul a {
     text-decoration: none;
-    color:rgb(202, 196, 196);
-    font-family:"Lilita One";
-    font-size:20px;
+    color: white;
+    font-family: 'Righteous', cursive;
+    font-weight: bold;
+    font-size: 40px;
     letter-spacing: 1px;
-}
-
-nav ul a:hover{
-    background-color:black;
-    color:rgb(241, 145, 145);
-    padding:20px;
-    border-radius:30px;
-    margin:-20px;
-}
-
-main .container{
-    height:300px;
-    width:300px;
+    text-shadow: 0px 3px 1px black, 0px 4px 1px black;
     background-color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 3px white inset, 0px 0px 2px black inset;
 }
+
+nav ul a:hover {
+    background-color: #135f9a;
+    box-shadow: 0px 3px 8px black;
+    margin: -7px;
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center; /* Updated */
+    justify-content: flex-start; /* Updated */
+    margin-top: 20px;
+    
+}
+
+.userinfo {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start; /* Updated */
+    margin-top: 20px;
+    
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 7px solid black;
+    margin-left: 20px;
+}
+
+
+.info-label {
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
+    color: black;
+    margin: 5px;
+   
+}
+
+.info-value {
+    font-family: 'Righteous', cursive;
+    font-size: 70px;
+    color: black;
+    margin: 5px;
+}
+
+.center-top {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.leaderboard-btn {
+    padding: 10px;
+    background-color: white;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Righteous', cursive;
+    border-radius: 10px;
+    box-shadow: 0px 2px 1px black;
+}
+.shop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 150px;
+}
+.shop-container h2 {
+    font-family: 'Righteous', cursive;
+    font-size: 40px;
+    color: black;
+    margin: 5px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+  }
+  
+
+
+
+
+
+  .shop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 30px; /* Adjust the padding value as desired */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 6px solid black; /* Add this line */
+  }
+  
+  
+  
+  .shop-item h3 {
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
+    color: black;
+    margin: 5px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  
+  
+  .shop-item p {
+    font-family: 'Righteous', cursive;
+    font-size: 18px;
+    color: black;
+    margin: 5px;
+  }
+  
+  .buy-btn {
+    padding: 10px;
+    background-color: white;
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Righteous', cursive;
+    border-radius: 10px;
+    box-shadow: 0px 2px 1px black;
+    cursor: pointer;
+  }
+  
+  .buy-btn:hover {
+    background-color: #ff4d37;
+    box-shadow: 0px 3px 8px black;
+    margin: -7px;
+  }
+  
