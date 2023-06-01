@@ -7,7 +7,8 @@ body{
     flex-flow: column nowrap;
     background-image:url("../media/bg.png");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
+    background-attachment: fixed;
     align-items: center;
     height: 100vh;
     padding: 0;
@@ -59,6 +60,10 @@ nav ul a:hover{
     background-color:#135f9a;
     box-shadow: 0px 3px 8px black;
     margin:0;
+}
+
+.logout-btn{
+
 }
 
 .userpro{
@@ -161,25 +166,28 @@ nav .userpro a{
     margin-top: 10px;
 }
 
+
 .applybtn:hover {
-    background-color: #ff4d37;
-    box-shadow: 0px 3px 8px black;
-    margin: -5px;
+    background-color: #f53a24;
+    padding:12px 32px;
 }
 
-
+.additembtn a{
+    text-decoration: none;
+    color:white;
+}
 button .additembtn {
     background-color: #ff2500;
     padding: 10px 30px;
     border: none;
     font-size: 20px;
     border-radius: 30%;
-    color: white;
     font-family: 'Righteous', cursive;
     text-shadow: 0px 2px 1px black;
     box-shadow: 0px 2px 1px black;
     cursor: pointer;
     margin-top: 10px;
+
 }
 
 button .additembtn:hover {

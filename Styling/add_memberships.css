@@ -1,7 +1,6 @@
 *{
     box-sizing: border-box;
 }
-
 body {
     display: flex;
     flex-flow: column nowrap;
@@ -66,58 +65,50 @@ nav ul a:hover {
     box-shadow: 0px 0px 3px white inset ,0px 0px 2px black inset;
 }
 
-.container{
+.add-form{
     display:flex;
-    flex-flow: row nowrap;
-    gap:100px;
+    flex-flow:column;
+    gap:50px;
+    align-items: center;
+    padding:30px;
     margin-top:50px;
-    padding:20px;
-}
-
-.container1, .container2 {
-    border:5px solid black;
     background-color: white;
-}
-.container caption{
-    font-family: 'Righteous', cursive;
-    color:blueviolet;
-    font-size:20px;
-    padding:15px;
-    background-color: black;
-}
-
-.container1 table th ,.container2 table th{
-    padding:20px;
-}
-
-.container1 table td, .container2 table td{
-    padding:15px;
-    text-align: center;
-}
-
-.container1 table th,.container2 table th{
-    border-bottom:1px solid black;
-    font-size:20px;
-    font-family: 'Righteous', cursive;
-}
-
-.container2{
     border:5px solid black;
 }
 
-.ap-re-btn{
-    padding:10px;
-    border:none;
-    cursor: pointer;
+.add-form h1{
     font-family: 'Righteous', cursive;
-    color:white;
-    box-shadow:1px 2px 2px black;
-    border-radius: 5px;
-}
-.approve{
-    background-color: #3e8f49;
-}
-.reject{
-    background-color: red;
 }
 
+.add-form label{
+    display:flex;
+    flex-flow:column;
+    align-items: center;
+    justify-content: center;
+    gap:15px;
+    font-weight: bold;
+    font-family: 'Righteous', cursive;
+}
+
+.add-form input{
+    border:none;
+    border-bottom:1px solid black;
+    outline:0;
+}
+
+.add-form textarea{
+    resize:none;
+    outline:0;
+    width:200px;
+    height:100px;
+}
+
+.add-form button{
+    background-color: #7bad38;
+    border:none;
+    padding:10px;
+    box-shadow: 0px 1px 3px black;
+    cursor: pointer;
+    font-size:12px;
+    font-weight: bold;
+}

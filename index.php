@@ -1,6 +1,20 @@
 <?php
 session_start();
 error_reporting(0);
+require 'dbconnect.php';
+
+if (isset($_GET['delete'])) {
+    $deleteID = $_GET['delete'];
+    $stmt = $conn->prepare('DELETE FROM membership_user where membershipID =?');
+    $stmt->bind_param('i',$deleteID);
+    $stmt->execute();
+
+    $stmt = $conn->prepare('DELETE FROM memberships where id = ?');
+    $stmt->bind_param('i',$deleteID);
+    $stmt->execute();
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +35,13 @@ error_reporting(0);
             <li><a href="index.php" class="selected-page">Membership Plans</a></li>
             <?php if($_SESSION['userRole']==='user'){?>
             <li><a href="profile.php">Profile</a></li>
+                <li><a class="logout-btn"href="logout.php">Logout</a></li>
             <?php }?>
             <?php
             if ($_SESSION['userRole'] === 'admin') {
                 ?>
                 <li><a href="admin.php">Admin</a></li>
+                <li><a class="logout-btn" href="logout.php">Logout</a></li>
                 <?php
             }
             ?>
@@ -43,19 +59,50 @@ error_reporting(0);
     </nav>
 </header>
 <main>
+
     <section class="container">
         <div class="container1">
             <?php
             if ($_SESSION['userRole'] === 'admin') {
                 ?>
-                <button class="additembtn">Add Plan</button>
+                <button class="additembtn"><a href="add_memberships.php">Add Plan</a></button>
                 <?php
             }
             ?>
         </div>
         <div class="container2">
             <?php
-            require "dbconnect.php";
+
+            if(isset($_SESSION['userID'])) {
+                $stmt= $conn->prepare('SELECT * FROM membership_user where userID = ?');
+                $stmt->bind_param('i',$_SESSION['userID']);
+                $stmt->execute();
+                $result1= $stmt->get_result();
+                $row1 = mysqli_fetch_all($result1);
+
+                if(empty($row1)) {
+                    if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['memID'])) {
+                        if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'user') {
+                            $memID = $_POST['memID'];
+                            $userID = $_SESSION['userID'];
+
+                            $stmt = $conn->prepare('INSERT INTO membership_user(membershipID,userID) VALUES (?, ?)');
+                            $stmt->bind_param('ii', $memID, $userID);
+                            $stmt->execute();
+
+                            header("Location: " . $_SERVER['REQUEST_URI']);
+                            exit();
+                        } else {
+                            header('Location: login.html');
+                            exit();
+                        }
+                    }
+                }
+            } else if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['memID'])) {
+                header('Location: login.html');
+                exit();
+            }
+
 
             $stmt = $conn->prepare('SELECT * FROM memberships');
             $stmt->execute();
@@ -67,13 +114,18 @@ error_reporting(0);
                     <div class="item">
                         <?php if ($_SESSION['userRole'] === 'admin') { ?>
                             <div class="icon">
-                                <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
+                                <a href="?delete=<?php echo $row['id']; ?>">
+                                    <i class="fa-solid fa-circle-minus fa-beat" style="color: #ff2600;"></i>
+                                </a>
                             </div>
                         <?php } ?>
                         <h5 class="planname"><?php echo $row['name']; ?></h5>
                         <p class="plandesc"><?php echo $row['description']; ?></p>
-                        <?php if(($_SESSION['userRole']==='user') || (count($_SESSION)===0)){?>
-                        <button class="applybtn" onclick="">Apply</button>
+                        <?php if(!isset($_SESSION['userRole']) || $_SESSION['userRole'] === 'user'){?>
+                            <form method="post">
+                                <button type="submit" class="applybtn">Apply</button>
+                                <input type="hidden" name="memID" value="<?php echo $row['id']; ?>">
+                            </form>
                         <?php } ?>
                     </div>
                     <?php
@@ -83,6 +135,8 @@ error_reporting(0);
             }
             ?>
         </div>
+
+
     </section>
 </main>
 <footer>
