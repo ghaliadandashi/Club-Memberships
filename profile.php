@@ -54,7 +54,6 @@ if($rowmm['name'] === NULL){
         </nav>
     </header>
 <section class="maincontainer">
-    <div class="container">
         <div class="userinfo">
             <div class="info-container">
                 <p class="info-label">Name:</p>
@@ -78,33 +77,33 @@ if($rowmm['name'] === NULL){
             </div>
 
         </div>
-    </div>
 
     <div class="shop-container">
         <h2>Shop</h2>
         <div class="shop-items">
             <div class="shop-item">
-                <h3>50 Gold</h3>
+                <h3>50 <span style="color:#FFD700">Gold</span></h3>
                 <p>$3.99</p>
                 <button class="buy-btn" data-amount="50" data-price="3.99">Buy</button>
             </div>
             <div class="shop-item">
-                <h3>250 Gold</h3>
+                <h3>250 <span style="color:#FFD700">Gold</span></h3>
                 <p>$6.00</p>
                 <button class="buy-btn" data-amount="250" data-price="6.00">Buy</button>
             </div>
             <div class="shop-item">
-                <h3>500 Gold</h3>
+                <h3>500 <span style="color:#FFD700">Gold</span></h3>
                 <p>$10.00</p>
                 <button class="buy-btn" data-amount="500" data-price="10.00">Buy</button>
             </div>
             <div class="shop-item">
-                <h3>1000 Gold</h3>
+                <h3>1000 <span style="color:#FFD700">Gold</span></h3>
                 <p>$14.99</p>
                 <button class="buy-btn" data-amount="1000" data-price="14.99">Buy</button>
             </div>
         </div>
     </div>
+
 
     <div class="center-top">
         <a href="https://royaleapi.com/league/crl/leaderboard_2023?season=crl_6&year=2023&region=international&round=3" class="leaderboard-btn">Leaderboard</a>

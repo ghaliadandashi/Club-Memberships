@@ -1,5 +1,6 @@
 <?php
 session_start();
+//print_r($_SESSION);
 error_reporting(0);
 require 'dbconnect.php';
 
@@ -80,20 +81,20 @@ if (isset($_GET['delete'])) {
                 $result1= $stmt->get_result();
                 $row1 = mysqli_fetch_all($result1);
 
+                $memID = $_POST['memID'];
+                $userID = $_SESSION['userID'];
                 if(empty($row1)) {
                     if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['memID'])) {
                         if (isset($_SESSION['userRole']) && $_SESSION['userRole'] === 'user') {
-                            $memID = $_POST['memID'];
-                            $userID = $_SESSION['userID'];
-
                             $stmt = $conn->prepare('INSERT INTO membership_user(membershipID,userID) VALUES (?, ?)');
                             $stmt->bind_param('ii', $memID, $userID);
                             $stmt->execute();
-
-                            header("Location: " . $_SERVER['REQUEST_URI']);
+                            $_SESSION['userMem']=$memID;
+                            header("Location: ".$_SERVER['PHP_SELF']);
                             exit();
                         } else {
                             header('Location: login.html');
+                            $_SESSION['memID'] = $memID;
                             exit();
                         }
                     }
@@ -123,7 +124,22 @@ if (isset($_GET['delete'])) {
                         <p class="plandesc"><?php echo $row['description']; ?></p>
                         <?php if(!isset($_SESSION['userRole']) || $_SESSION['userRole'] === 'user'){?>
                             <form method="post">
-                                <button type="submit" class="applybtn">Apply</button>
+                                <?php if($_SESSION['userMem'] === 'None' || !isset($_SESSION['userID']) || $_SESSION['userMem'] != $row['id']){?>
+                                    <button type="submit" class="applybtn">Apply</button>
+                                <?php }else if($_SESSION['userMem'] == $row['id']){
+                                    $stmt=$conn->prepare('SELECT status FROM membership_user where userID= ?');
+                                    $stmt->bind_param('i',$_SESSION['userID']);
+                                    $stmt->execute();
+                                    $result2= $stmt->get_result();
+                                    $row2 = mysqli_fetch_assoc($result2);
+                                    if($row2['status'] == 'pending'){
+                                    ?>
+                                    <button type="submit" class="applybtn" style="background-color:grey"><?php echo ucfirst($row2['status'])?></button>
+                                <?php }else{?>
+                                    <button type="submit" class="applybtn" style="background-color:#3e8f49"><?php echo ucfirst($row2['status'])?></button>
+                                    <?php
+                                    }
+                                } ?>
                                 <input type="hidden" name="memID" value="<?php echo $row['id']; ?>">
                             </form>
                         <?php } ?>

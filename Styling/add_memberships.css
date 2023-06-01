@@ -74,6 +74,7 @@ nav ul a:hover {
     margin-top:50px;
     background-color: white;
     border:5px solid black;
+    width:450px;
 }
 
 .add-form h1{
@@ -87,28 +88,45 @@ nav ul a:hover {
     justify-content: center;
     gap:15px;
     font-weight: bold;
+    color:white;
+    border-radius: 10px;
     font-family: 'Righteous', cursive;
+    background-color: #3e8f49;
 }
 
+
 .add-form input{
-    border:none;
-    border-bottom:1px solid black;
+    border:1px solid;
+    border-top:none;
     outline:0;
+    width:250px;
+    height:40px;
 }
 
 .add-form textarea{
     resize:none;
     outline:0;
-    width:200px;
+    width:250px;
     height:100px;
 }
 
 .add-form button{
-    background-color: #7bad38;
-    border:none;
     padding:10px;
-    box-shadow: 0px 1px 3px black;
+    border:none;
     cursor: pointer;
-    font-size:12px;
-    font-weight: bold;
+    font-family: 'Righteous', cursive;
+    color:white;
+    box-shadow:1px 2px 2px black;
+    border-radius: 5px;
+    background-color: #3e8f49;
+    font-size: 15px;
+}
+
+.error-container{
+    background-color: rgb(231, 53, 32,0.8);
+    color:black;
+    font-family: 'Righteous', cursive;
+    margin-top:-10px;
+    padding:10px 40px;
+    border-radius: 10px;
 }

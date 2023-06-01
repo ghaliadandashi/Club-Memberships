@@ -44,25 +44,34 @@ if(count($_SESSION)==0 || $_SESSION['userRole']==='user'){
         <button type="submit">Add Plan</button>
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $mem_name=$_POST['mem-name'];
-            $mem_desc = $_POST['mem-desc'];
-            $stmt = $conn->prepare('SELECT * FROM memberships where name= ?');
-            $stmt->bind_param('s',$mem_name);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $row = mysqli_fetch_assoc($result);
-            if(!empty($row)){?>
-                <div class="error">Membership Already Exists!</div>
-                <?php
-            }else{
-                $stmt = $conn->prepare('INSERT INTO memberships(name,description)VALUES(?,?)');
-                $stmt->bind_param('ss',$mem_name,$mem_desc);
-                $stmt->execute();?>
-                <div class="success">Membership Added!</div>
-                <?php
-            }
-        }
-        ?>
+    $mem_name=$_POST['mem-name'];
+    $mem_desc = $_POST['mem-desc'];
+    $stmt = $conn->prepare('SELECT * FROM memberships where name= ?');
+    $stmt->bind_param('s',$mem_name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = mysqli_fetch_assoc($result);
+    $error_message = "";
+    if(!empty($row)){
+        $error_message = "Membership Already Exists!";
+    }else if(strlen($mem_desc)>455){
+        $error_message = "Description is too long!";
+    }else{
+        $stmt = $conn->prepare('INSERT INTO memberships(name,description)VALUES(?,?)');
+        $stmt->bind_param('ss',$mem_name,$mem_desc);
+        $stmt->execute();
+        header('Location: index.php');
+    }
+}
+
+if(!empty($error_message)){?>
+    <div class="error-container">
+        <div class="error"><?php echo $error_message; ?></div>
+    </div>
+<?php
+}
+?>
+
     </form>
 </main>
 </body>

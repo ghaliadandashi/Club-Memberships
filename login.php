@@ -23,29 +23,40 @@ if (mysqli_num_rows($result) == 0) {
     $stmt->execute();
 }
 
-$stmt = $conn->prepare('SELECT id, password, email , role FROM users WHERE email = ?');
+$stmt = $conn->prepare('SELECT id, password, email, role FROM users WHERE email = ?');
 $stmt->bind_param('s', $email);
 $stmt->execute();
 $result = $stmt->get_result();
+$row = mysqli_fetch_assoc($result);
 
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_assoc($result);
-        $hash = $row['password'];
-        if (password_verify($pass, $hash)) {
-            $_SESSION['userID'] = $row['id'];
-            $_SESSION['userRole'] = $row['role'];
-        } else {
-            echo json_encode(["error" => "Wrong password!"]);
-            exit();
+$stmt=$conn->prepare('SELECT membershipID FROM membership_user where userID = ?');
+$stmt->bind_param('i', $row['id']);
+$stmt->execute();
+$result1 = $stmt->get_result();
+$row1 = mysqli_fetch_assoc($result1);
+
+
+if (mysqli_num_rows($result) == 1) {
+    $hash = $row['password'];
+    if (password_verify($pass, $hash)) {
+        $_SESSION['userID'] = $row['id'];
+        $_SESSION['userRole'] = $row['role'];
+        if(!isset($row1)){
+            $_SESSION['userMem'] = "None";
+        }else {
+            $_SESSION['userMem'] = $row1['membershipID'];
         }
     } else {
-        echo json_encode(["error" => "User does not exist!"]);
+        echo json_encode(["error" => "Wrong password!"]);
         exit();
     }
+} else {
+    echo json_encode(["error" => "User does not exist!"]);
+    exit();
+}
 
+$stmt->close();
+$conn->close();
 
-    $stmt->close();
-    echo json_encode(['success' => 'Login successful.']);
-    $conn->close();
-
+echo json_encode(['success' => 'Login successful.']);
 ?>
